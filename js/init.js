@@ -1,5 +1,6 @@
-(function(){
-const config = {
+// Your web app's Firebase configuration
+ 
+  var firebaseConfig = {
    apiKey: "AIzaSyCRqX4GmBVGbGe2w9CU2GCZT1LgDSmIKR4",
     authDomain: "fbwebauth10.firebaseapp.com",
     projectId: "fbwebauth10",
@@ -8,30 +9,119 @@ const config = {
     appId: "1:685889139313:web:96df646e3c3f797d78e1d0",
     measurementId: "G-0HQBLHD2QS"
   };
-  firebase.initializeApp(config);
-   
-   const txtEmail = document.getElementById('txtEmail')
-   const txtPassword = document.getElementById('txtPassword')
-   const btnLogin = document.getElementById('btnLogin')
-   const btnSignUp = document.getElementById('btnSignUp')
-   const btnLogout = document.getElementById('btnLogout')
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
 
-   btnLogin.addEventListenner('click', e => {
-   	const email = txtEmail.value;
-   	const pass = txtPassword.value;
-   	const auth = firebase.auth();
+ let arregloUsuarios = [];
+  db.collection("usuarios").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
 
-   	const promise = auth.signInWithEmailAndPassword(email, pass);
-   	promise.catch(e => console.log(e.message));
-   });
+      var obj = doc.data()
+        obj.id = doc.id;
+        arregloUsuarios.push(obj);
+    });
+});
+  
+  console.log(arregloUsuarios)
 
-   btnSignUp.addEventListenner('click', e => {
-   	const email = txtEmail.value;
-   	const pass = txtPassword.value;
-   	const auth = firebase.auth();
+  function leerDatosUsuario(){
+    var id = document.getElementById("usuarioaEliminar").value
 
-   	const promise = auth.createUserWithEmailAndPassword(email, pass);
-   	promise.catch(e => console.log(e.message));
-   });
+    var docRef = db.collection("usuarios").doc(id);
 
-}()); 
+docRef.get().then(function(doc) {
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch(function(error) {
+    console.log("Error getting document:", error);
+});
+}
+
+
+  function agregarDatos(){
+    var email = document.getElementById("emailNuevoUsuario").value
+    var nombre = document.getElementById("nombreNuevoUsuario").value
+    var password= document.getElementById("contraseniaNuevoUsuario").value
+
+    if (email == "" || email == null || password == "" || password == null) {
+      alert("Llena los campos por favor")
+    }else{
+        db.collection("usuarios").add({
+
+    Email: email,
+    Contrasenia: password,
+    Nombre: nombre
+})
+.then(function(docRef) {
+    alert("El usuario se agrego correctamente")
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+
+    }
+  }
+  function registrarse() {
+    var email = document.getElementById("emailNuevoUsuario").value
+    var password= document.getElementById("contraseniaNuevoUsuario").value
+      if (email == "" || email == null || password == "" || password == null) {
+        alert("Llena los campos por favor")
+      } else {
+        console.log("Entro a funcion registrarse")
+        console.log("El correo que se va a registrar es:" + email)
+        console.log("El password que se va a registrar es:" + password)
+        firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
+          console.log(user)
+          alert("Tu cuenta se creo correctamente")
+          window.location.href = "index.html"
+        }).catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          alert(errorMessage)
+          // ..
+        });
+      }
+    }
+ function iniciarSesion () {
+    var email = document.getElementById("emailSesion").value
+    var password= document.getElementById("contraseniaSesion").value
+      if (email == "" || email == null || password == "" || password == null) {
+        alert("Llena los campos por favor")
+      } else {
+      firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {
+        alert("inicio de sesion exitoso")
+        window.location.href = "index.html"
+      }).catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage)
+      });
+    }
+}
+
+   function cerrarSesion() {
+      firebase.auth().signOut().then(function() {
+        email = false;
+        password = false;
+        alert("Cerraste sesion Correctamente")
+        window.location.href = "index.html"
+      }).catch(function(error) {
+        alert(error)
+      });
+    }
+  
+
+
+function borrarDatosUsuarios(){
+  var id = document.getElementById("usuarioaEliminar").value
+  db.collection("usuarios").doc(id).delete().then(function() {
+    alert("Tu usuario se elimino correctamente")
+}).catch(function(error) {
+    console.error("Error removing document: ", error);
+});
+}
