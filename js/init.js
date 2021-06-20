@@ -1,16 +1,16 @@
-firebase.initializeApp({
-  apiKey: "AIzaSyCRqX4GmBVGbGe2w9CU2GCZT1LgDSmIKR4",
+(function(){
+const config = {
+   apiKey: "AIzaSyCRqX4GmBVGbGe2w9CU2GCZT1LgDSmIKR4",
     authDomain: "fbwebauth10.firebaseapp.com",
     projectId: "fbwebauth10",
     storageBucket: "fbwebauth10.appspot.com",
     messagingSenderId: "685889139313",
     appId: "1:685889139313:web:96df646e3c3f797d78e1d0",
     measurementId: "G-0HQBLHD2QS"
-});
-
-
-
-const txtEmail = document.getElementById('txtEmail')
+  };
+  firebase.initializeApp(config);
+   
+   const txtEmail = document.getElementById('txtEmail')
    const txtPassword = document.getElementById('txtPassword')
    const btnLogin = document.getElementById('btnLogin')
    const btnSignUp = document.getElementById('btnSignUp')
