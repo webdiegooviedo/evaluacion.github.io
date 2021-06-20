@@ -1,12 +1,12 @@
 *{margin:0; padding:0;}
 
 body {
-  background: url(..fondo.jpg); 
+  background: url(fondo.jpg); 
 }
 
 h1{
   text-align: center;
-  font-size: 25;
+  font-size: 20;
   background-color: #696969;
 }
 
