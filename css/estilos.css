@@ -1,12 +1,12 @@
 *{margin:0; padding:0;}
 
 body {
-  background-image: url('fondo.jpg');
+  background: url(../imagenes/fondo.jpg);
 }
 
 h1{
   text-align: center;
-  font-size: 10;
+  font-size: 25;
   background-color: #e30052;
   font-family: cursive;
 }
@@ -15,6 +15,7 @@ h4 {
   text-align: center;
   font-size: 25px;
   background-color: #e30052;
+  font-family: cursive; 
 }
 
 header{
@@ -55,8 +56,9 @@ header nav a{
   text-decoration:none;
   padding: 10px 20px;
   line-height:normal;
-  font-size:20px;
+  font-size:10px;
   font-weight:bold;
+  font-family: cursive;
   -webkit-transition:all 500ms ease;
   -o-transition:all 500ms ease; 
   transition:all 500ms ease; 
