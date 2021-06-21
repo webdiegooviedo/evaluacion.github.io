@@ -28,25 +28,7 @@
     </header>
 <section class="contenido wrapper">
    <h1>¡Registrate!</h1>
-   <br>
-<label>Nombre:</label>
-  <input type="text" name="" id="nombreNuevoUsuario" required>
-  <br><br>
-  <label>Email:</label>
-  <input type="text" name="" id="emailNuevoUsuario">
-  <br><br>
-  <label>Contraseña:</label>
-  <input type="password" name="" id="contraseniaNuevoUsuario">
-  <br><br>
-  <button onclick="agregarDatos(), registrarse()">REGISTRARME</button>
-  <br><br>
-  <mi-footer></mi-footer>
-  </section>
- 
-    </body>
-    <script  src="js/init.js"></script>
-</html>
-<script>
+  <script>
  /** conexion al sistema de autentificacion de Firebase. */
 const auth = firebase.auth();
 /* Google*/
@@ -72,3 +54,21 @@ async function terminaSesion(){
  }
 }
   </script>
+   <br>
+<label>Nombre:</label>
+  <input type="text" name="" id="nombreNuevoUsuario" required>
+  <br><br>
+  <label>Email:</label>
+  <input type="text" name="" id="emailNuevoUsuario">
+  <br><br>
+  <label>Contraseña:</label>
+  <input type="password" name="" id="contraseniaNuevoUsuario">
+  <br><br>
+  <button onclick="agregarDatos(), registrarse()">REGISTRARME</button>
+  <br><br>
+  <mi-footer></mi-footer>
+  </section>
+    </body>
+    <script  src="js/init.js"></script>
+</html>
+
