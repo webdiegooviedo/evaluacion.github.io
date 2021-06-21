@@ -125,3 +125,28 @@ function borrarDatosUsuarios(){
     console.error("Error removing document: ", error);
 });
 }
+
+/** conexion al sistema de autentificacion de Firebase. */
+const auth = firebase.auth();
+/* Google*/
+const provider = new firebase.auth.GoogleAuthProvider();
+/** Lista */
+provider.setCustomParameters({ prompt: "select_account" });
+
+auth.onAuthStateChanged(
+ usuarioAuth => {
+  email.value = usuarioAuth.email;
+  email.value = usuarioAuth.displayName;
+  email.value = usuarioAuth.photoURL;
+ } else{
+ auth.signInWithRedirect(provider);
+}
+}, );
+
+async function terminaSesion(){
+ try{
+  await auth.signOuth();
+ } catch (e) {
+  procesaError (e);
+ }
+}
