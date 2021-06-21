@@ -77,13 +77,15 @@
         procesaError
       );
       /** Termina la sesión. */
-      async function terminaSesión() {
-        try {
-          await auth.signOut();
-        } catch (e) {
-          procesaError(e);
-        }
-      }
+      firebase.auth().signOut().then(function() {
+        email = false;
+        password = false;
+        alert("Cerraste sesion Correctamente")
+        window.location.href = "index.html"
+      }).catch(function(error) {
+        alert(error)
+      });
+    }
       /** Procesa un error. Muestra el objeto en la consola y un cuadro de
        * alerta con el mensaje.
        * @param {Error} e descripción del error. */
