@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Autenticación</title>
-    <link rel="stylesheet" href="estilos.css">
+    <title>RabbitStore</title>
+    <link rel="shortcut icon" type="image/x-icon" href="imagenes/icono.ico">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script type="module" src="cmp/mi-footer.js"></script>
 
    <!-- Carga el núcleo de Firebase JS SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
@@ -18,15 +18,15 @@
     <h1>Sesión</h1>
     <fieldset>
       <legend>Email</legend>
-      <output id="email"><progress max="100">Cargando…</progress></output>
+      <output id="emailNuevoUsuario"><progress max="100">Cargando…</progress></output>
     </fieldset>
     <fieldset>
       <legend>Nombre</legend>
-      <output id="nombre"></output>
+      <output id="nombreNuevoUsuario"></output>
     </fieldset>
     <figure><img id="avatar" alt="Avatar"></figure>
     <button type="button" onclick="terminaSesión()">Terminar Sesión</button>
-    <footer>Copyright &copy; 2021 Ricardo Armando Machorro Reyes.</footer>
+    <footer>Copyright &copy; Oviedo Pimentel Diego Emiliano.</footer>
     <script>
       //@ts-check
       /** Conexión al sistema de autenticación de Firebase. */
