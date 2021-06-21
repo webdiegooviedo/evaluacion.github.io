@@ -5,7 +5,28 @@
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/icono.ico">
     <link rel="stylesheet" href="css/estilos.css">
     <script type="module" src="cmp/mi-footer.js"></script>
+  </head>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <body>
+       <header>
+      <div class="wrapper"> 
+      <div class="logo"><a href="index.html">RabbitStore</a></div>
+    <nav>
 
+          <a href="index.html" class="active">Inicio</a>
+          <a href="sneakers.html" class="active">Sneakers</a>
+          <a href="hype.html">Hype</a>
+          <a href="index.html">Conocenos</a>
+          <a href="iniciarSe.html">Inicia Sesion</a>
+          <a href="registro.html">¡Registrate!</a>
+      </nav><!-- .nav-menu -->
+      </div>
+    </header>
+<section class="contenido wrapper">
    <!-- Carga el núcleo de Firebase JS SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <!-- Agrega el manejo de autenticación. -->
@@ -76,6 +97,7 @@
         alert(e.message);
       }
     </script>
+    </section>
   </body>
 </html>
 
